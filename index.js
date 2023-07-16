@@ -6,7 +6,7 @@ const apiKey = "4NKQ3-815C2-8T5Q2-16318-55301"
 const url = "https://devcore02.cimet.io/v1/generate-token"
 
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3030
 
 // Enable CORS
 app.use(cors({ origin: "*" }))
@@ -31,6 +31,6 @@ app.get("/token", (req, res) => {
 })
 
 // Start the server
-app.listen(port, () => {
-	console.log(`Server running at http://localhost:${port}/`)
+app.listen(PORT, () => {
+	console.log(`Server running ${PORT}/`)
 })
