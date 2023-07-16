@@ -14,17 +14,22 @@ app.use(cors({ origin: "*" }))
 // Routes
 app.get("/token", async (req, res) => {
 	console.log("calling")
-	const res1 = await axios.post(
-		url,
-		{ name: "John Doe" },
-		{
-			headers: {
-				"content-type": "text/json",
-				"Api-Key": "4NKQ3-815C2-8T5Q2-16318-55301",
-			},
-		}
-	)
-	console.log({ res1 })
+	try {
+		const data = await axios.post(
+			url,
+			{ name: "John Doe" },
+			{
+				headers: {
+					"content-type": "text/json",
+					"Api-Key": "4NKQ3-815C2-8T5Q2-16318-55301",
+				},
+			}
+		)
+		res.status(200).json({ data: data.data })
+	} catch (error) {
+		res.status(500).json(error)
+	}
+	// console.log({ data: data.data })
 	// fetch(url, {
 	// 	method: "POST",
 	// 	headers: {
