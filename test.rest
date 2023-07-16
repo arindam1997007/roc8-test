@@ -1,2 +1,7 @@
 ###
 GET http://localhost:3000/token
+
+###
+GET http://localhost:3000/products
+content-type: application/json
+Auth-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcGlfa2V5IjoiNE5LUTMtODE1QzItOFQ1UTItMTYzMTgtNTUzMDEiLCJzdWIiOjQzOCwiaXNzIjoiaHR0cHM6Ly9kZXZjb3JlMDIuY2ltZXQuaW8vdjEvZ2VuZXJhdGUtdG9rZW4iLCJpYXQiOjE2ODk1MDg2NjAsImV4cCI6MTY4OTUxOTQ2MCwibmJmIjoxNjg5NTA4NjYwLCJqdGkiOiJQT3hhSHM5S1RESGE4QU5OIn0.pc9XzRhVwyjxYI1xUnMHDTWvmdUedTEefGl7vAaFssA

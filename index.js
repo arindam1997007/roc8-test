@@ -13,7 +13,7 @@ app.use(cors({ origin: "*" }))
 
 // Routes
 app.get("/token", async (req, res) => {
-	console.log("calling")
+	console.log("calling token")
 	try {
 		const data = await axios.post(
 			url,
@@ -29,21 +29,30 @@ app.get("/token", async (req, res) => {
 	} catch (error) {
 		res.status(500).json(error)
 	}
-	// console.log({ data: data.data })
-	// fetch(url, {
-	// 	method: "POST",
-	// 	headers: {
-	// 		"Api-Key": "4NKQ3-815C2-8T5Q2-16318-55301",
-	// 	},
-	// })
-	// 	.then(response => response.json())
-	// 	.then(data => {
-	// 		res.status(200).json(data)
-	// 	})
-	// 	.catch(error => {
-	// 		// console.error("Error:", error)
-	// 		res.status(500).json(error)
-	// 	})
+})
+
+app.get("/products", async (req, res) => {
+	console.log({ headers: req.headers })
+	console.log("calling products", req.headers["auth-token"])
+	try {
+		const data = await axios.post(
+			"https://devcore02.cimet.io/v1/plan-list",
+			{
+				session_id:
+					"eyJpdiI6IkVNUkZ1N0hlSHhHSnJ3Vjl4aUlxc0E9PSIsInZhbHVlIjoieFlxa1wvVDYxQWl5U2pxMDFcL0R6ZVVvdEN6Mkk0R29TRDN3ZnN0U3VGcER0cEFMa2NVb0xNcDJudjlRTHRUbGJkIiwibWFjIjoiMTE0MmU0MGE5YmJhMzY4Nzc4MDExNmZkNTI1MjZhMGE3OTQyMDZmOTc1MTVmZDM1Mzc3ZmJmNjhmMzllOGYxYSJ9",
+			},
+			{
+				headers: {
+					"content-type": "text/json",
+					"Api-Key": "4NKQ3-815C2-8T5Q2-16318-55301",
+					"Auth-token": req.headers["auth-token"],
+				},
+			}
+		)
+		res.status(200).json({ data: data.data })
+	} catch (error) {
+		res.status(500).json(error)
+	}
 })
 
 // Start the server
