@@ -51,7 +51,7 @@ app.get("/products", async (req, res) => {
 		)
 		res.status(200).json({ data: data.data })
 	} catch (error) {
-		res.status(500).json(error)
+		res.status(500).json({ error: error.response.data })
 	}
 })
 
